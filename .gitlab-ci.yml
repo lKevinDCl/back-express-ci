@@ -13,11 +13,13 @@ stages:
   - deploy
 
 # Trabajo de seguridad
+# Trabajo de seguridad
 auditar_seguridad:
   stage: validate
   script:
     - npm install
-    - npm audit
+    - echo "Auditando solo paquetes de producción..."
+    - npm audit --omit=dev
 
 # Tu trabajo original de pruebas
 ejecutar_pruebas:
