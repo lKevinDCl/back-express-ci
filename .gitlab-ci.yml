@@ -1,12 +1,32 @@
 image: node:20-alpine
 
-stages:
-  - test
+# Agregamos el Caché
+cache:
+  paths:
+    - node_modules/
 
+# Definimos el nuevo orden de las etapas
+stages:
+  - validate
+  - test
+  - build
+
+# Trabajo de seguridad
+auditar_seguridad:
+  stage: validate
+  script:
+    - npm install # Necesario la primera vez para generar el árbol de dependencias
+    - npm audit
+
+# Tu trabajo original de pruebas
 ejecutar_pruebas:
   stage: test
   script:
-    - echo "Instalando dependencias del proyecto..."
     - npm install
-    - echo "Ejecutando las pruebas de Jest..."
     - npm test
+
+# El futuro trabajo de empaquetado (dejado como ejemplo)
+empaquetar_app:
+  stage: build
+  script:
+    - echo "Aquí irían los comandos de Docker build..."
