@@ -1,0 +1,15 @@
+# Definimos la imagen base de Docker que usará el Runner de GitLab
+image: node:20-alpine
+
+# Definimos las etapas de nuestro pipeline
+stages:
+  - test
+
+# Creamos el trabajo (job) de pruebas
+ejecutar_pruebas:
+  stage: test
+  script:
+    - echo "Instalando dependencias del proyecto..."
+    - npm install
+    - echo "Ejecutando las pruebas de Jest..."
+    - npm test
