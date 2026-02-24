@@ -11,6 +11,6 @@ app.get('/', (req, res) => {
 });
 
 // Rutas de usuarios (prefijo /api/usuarios)
-app.use('/api/usuarios', userRoutes);
+app.use('/api/usuariosv2', userRoutes);
 
 module.exports = app;
