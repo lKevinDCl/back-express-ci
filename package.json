@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "node server.js",
+  "start": "node src/server.js",
+  "dev": "node src/server.js", 
   "test": "jest"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
